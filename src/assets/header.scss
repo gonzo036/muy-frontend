@@ -1,0 +1,194 @@
+@import "./variables";
+
+header
+{
+	height: auto;
+	width: 100%;
+	position: relative;
+
+	nav
+	{
+		width: 100%;
+		height: auto;
+		padding: 10px;
+		position: relative;
+		overflow: hidden;
+
+		a
+		{
+			display: block;
+			float: left;
+			.header_logo
+			{
+				max-width: 90px;
+				width: 100%;
+				margin: 10px;
+			}
+		}
+		ul
+		{
+			width: auto;
+			float: right;
+			@include mobileGrand
+			{
+				display: none;
+			}
+			li
+			{
+				float: left;
+				a
+				{
+					color: #e30a33;
+					float: left;
+					text-decoration: none; 
+					padding: 10px 20px;
+					border: 2px solid #e30a33;
+					margin: 10px;
+					transition: all 0.4s;
+					@include rounded(10px);
+
+					&:hover
+		            {
+		                background-color: #333333;
+		                color: #fff;
+		            }
+				}
+			}
+		}
+	}
+}
+
+// menu desplegable
+.nav_icon 
+{
+	width: 40px;
+	height: 50px;
+	position: absolute;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+	-webkit-transition: .5s ease-in-out;
+	-o-transition: .5s ease-in-out;
+	-moz-transition: .5s ease-in-out;
+	transition: .5s ease-in-out;
+	cursor: pointer;
+	top: 20px;
+	right: 17px;
+	z-index: 10000;
+	display: none;
+	@include mobileGrand
+	{
+		display: block;
+	}
+	span 
+	{
+		display: block;
+		position: absolute;
+		height: 3px;
+		width: 100%;
+		background: #070F4E;
+		opacity: 1;
+		left: 0;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transition: .25s ease-in-out;
+		-o-transition: .25s ease-in-out;
+		-moz-transition: .25s ease-in-out;
+		transition: .25s ease-in-out;
+		&:nth-child(1) 
+		{
+		  top: 0px; 
+		}
+
+		&:nth-child(2), 
+		&:nth-child(3) 
+		{
+		  top: 10px;
+		}
+
+		&:nth-child(4) 
+		{
+		  top: 20px;
+		}
+	}
+}
+// funcion mobile para desplegar menu con solo la clase active
+.wrapper.active 
+{
+	@include mobileGrand
+	{
+		.nav_icon
+		{
+			span
+			{
+				&:nth-child(1) 
+				{
+					top: 18px;
+					width: 0%;
+					left: 50%; 
+				}
+				&:nth-child(2) 
+				{
+					transform: rotate(45deg);  
+					-webkit-transform: rotate(45deg);
+					-moz-transform: rotate(45deg);
+					-ms-transform: rotate(45deg);
+					-o-transform: rotate(45deg);
+				}
+				&:nth-child(3) 
+				{
+					transform: rotate(-45deg); 
+					-webkit-transform: rotate(-45deg);
+					-moz-transform: rotate(-45deg);
+					-ms-transform: rotate(-45deg);
+					-o-transform: rotate(-45deg);
+				}
+				&:nth-child(4) 
+				{
+					top: 18px;
+					width: 0%;
+					left: 50%; 
+				}
+			}
+		}
+		header
+		{
+			nav
+			{
+				overflow: inherit;
+				ul
+				{
+					display: block;
+					width: 100%;
+					position: absolute;
+					background: #fff;
+					z-index: 100000;
+					margin: 13% 0px;
+					height: 100vh;
+					display: table;
+					li
+					{
+						float: none;
+						display: block;
+						margin: 30% auto;
+						overflow: hidden;
+						a
+						{
+							float: none;
+							display: block;
+							margin: 0 auto;
+							width: 200px;
+							text-align: center;
+
+						}
+					}
+				}	
+			}
+		}
+	}
+}

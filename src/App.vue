@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app" class="wrapper">
+		<Header />
+		<Login />
+		<Admin />
+		<Profile />
+		<Footer />
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+	import Header from './components/Header.vue'
+	import Login from './components/Login.vue'
+	import Admin from './components/Admin.vue'
+	import Profile from './components/Profile.vue'
+	import Footer from './components/Footer.vue'
+	import Vuex from 'vuex';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+	export default {
+		name: 'app',
+		components: {
+			Header,
+			Login,
+			Admin,
+			Profile,
+			Footer
+		},
+		methods: {
+			...Vuex.mapMutations(['setUser']),
+		},
+		mounted() {
+			if (localStorage.user) {
+				this.setUser(localStorage.getItem('user'));
+			}
+		}
+	}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" >
+	@import 'assets/normalize.css';
+	@import 'assets/general.scss';
+	@import 'assets/header.scss';
+	@import 'assets/footer.scss';
 </style>

@@ -1,0 +1,18 @@
+@import "./variables";
+
+footer
+{
+	width: 100%;
+	background: #f7f7f7;
+	padding: 30px 10px;
+	position: relative;
+    color: #999999;
+
+    .copyright
+    {
+    	font-size: $font-tablet;
+    	width: 100%;
+    	text-align: center;
+
+    }
+}

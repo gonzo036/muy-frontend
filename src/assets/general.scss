@@ -1,0 +1,310 @@
+@import "./variables";
+@import "./fonts";
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+html, body {
+    background: #fff;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: #000;
+}
+body
+{
+    font-family: $font-regular , Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    max-width: 100%;
+    display: block;
+    margin:0 auto;
+    position: relative;
+    left: 0;
+    right: 0;
+    transition:all .2s ease-out;
+    overflow: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    font-size: $font-desktop;
+}
+
+
+.wrapper
+{
+    .form_container
+    {
+        width: 100%;
+        max-width: 1280px;
+        margin: 10% auto;
+        padding: 0 20px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        display:flex;
+        align-items:flex-start;
+        align-content:flex-start;
+        @include mobileGrand
+        {
+            display: block;
+        }
+        @include mobilePlus
+        {
+            padding: 0 10px;
+        }
+    } // form_container
+
+
+    .info_box,
+    .form_box
+    {
+        width: 50%;
+        float: left;
+        align-self:stretch;
+        overflow: hidden;
+
+        @include mobileGrand
+        {
+            float: none;
+            width: 100%;
+            display: block;
+        }
+    }
+    .info_box
+    {
+        background-image: url('#{$url-image}/bg_info.jpg');
+        background-size: cover;
+        background-position: top center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .text_info_central
+        {
+            padding: 10%;
+            h1
+            {
+                text-align: center;
+                margin-bottom: 10%;
+                font-size: $font-title;
+                line-height: 100%;
+                color: #fff;
+                font-family: $font-bold;
+                @include mobileMaxL
+                {
+                    font-size: $font-title - 10;
+                }
+            }
+            p
+            {
+                color: #fff;
+                text-align: center;
+                font-size: $font-text;
+                line-height: $font-text + 2;
+                font-family: $font-medium;
+                @include mobileMaxL
+                {
+                    font-size: $font-text - 4;
+                }
+            }
+        }
+    } // info_box
+
+    .form_box
+    {
+        padding: 10% 5%;
+        background: #f7f7f7;
+    }
+    .title_form
+    {
+        text-align: center;
+        font-family: $font-bold;
+        font-size: $font-title-form;
+        color: #333333;
+        line-height: 100%;
+        padding-bottom: 44px;
+        @include mobileMaxL
+        {
+            font-size: $font-title-form - 15;
+        }
+    }
+    .alert {
+        background: #ff4b5a url('#{$url-image}/icon_alert.png') 14px center no-repeat;
+        width: 100%;
+        @include rounded(10px);
+        float: left;
+        color: #fff;
+        padding: 5px 4% 5px 50px;
+        line-height: 20px;
+        border: none;
+        font-size: $font-tablet + 1;
+        box-sizing: border-box;
+        background-size: 20px;
+        margin: 0 0 40px;
+        visibility: hidden;
+
+        &.error
+        {
+            visibility: visible;
+        }
+        &.success
+        {
+            visibility: visible;
+            background: #09AA6C url('#{$url-image}/icon_alert.png') 14px center no-repeat;;
+        }
+    } // alert
+    .form
+    {
+        &.hidden{
+    		visibility: hidden;
+			display: none;
+    	}
+
+        .box_elements_form
+        {
+            padding: 0 5%;
+            position: relative;
+            margin:  0 0 10% 0;
+
+        }
+        label
+        {
+            width: 100%;
+            font-size: $font-tablet + 1;
+            color: #999999;
+            line-height: 1.5;
+            padding-left: 5px;
+            margin: 0 0 10px 0;
+            display: block;
+            @include mobileMaxL
+            {
+                font-size: $font-tablet - 2;
+            }
+        }
+        input, textarea
+        {
+            font-family: $font-bold;
+            border: none;
+            border-bottom: 2px solid #d9d9d9;
+            display: block;
+            width: 100%;
+            background: transparent;
+            font-family: $font-light;
+            font-size: $font-text;
+            color: #555555;
+            line-height: 100%;
+            padding: 15px 10px;
+            transition: all 0.30s ease-in-out;
+
+            &.error
+            {
+                box-shadow: 0 4px 2px -2px #ff4b5a;
+                padding: 16px 10px;
+                border-bottom: 2px solid #ff4b5a;
+            }
+            &:focus {
+                box-shadow: 0 4px 2px -2px #ccc;
+                padding: 16px 10px;
+                border-bottom: 2px solid #3c65ec;
+            }
+            @include mobileMaxL
+            {
+                font-size: $font-text - 2;
+            }
+        }
+        textarea
+        {
+            height: 100px;
+            resize: none;
+        }
+        button
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 160px;
+            width: 100%;
+            height: 50px;
+            background-color: #3c65ec;
+            @include rounded(10px);
+            font-size: 16px;
+            color: #fff;
+            float: right;
+            transition: all 0.4s;
+            box-shadow: 0 10px 30px 0px #3c65ec;
+            font-family: $font-bold;
+            letter-spacing: 1px;
+
+            &:hover
+            {
+                background-color: #333333;
+                box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+            }
+
+        }
+    } // form
+    .select-style
+    {
+
+        background: #fff url('/static/images/arrowdown_quotation.png') no-repeat 95% 50%;
+        position: relative;
+        font-family: $font-bold;
+        border: none;
+        border-bottom: 2px solid #d9d9d9;
+        display: block;
+        width: 100%;
+        background: transparent;
+        font-family: $font-light;
+        font-size: $font-text;
+        color: #555555;
+        padding: 15px 10px;
+        transition: all 0.30s ease-in-out;
+        @include tablet
+        {
+            width: 100%;
+        }
+
+        select
+        {
+            letter-spacing: 1px;
+            padding: 8px 0px;
+            width: 100%;
+            border: none;
+            color: #666;
+            box-shadow: none;
+            background-color: transparent;
+            background-image: none;
+            appearance: none;
+
+            @include tablet
+            {
+                width: 90%;
+            }
+        }
+    } // select-style
+}// wrapper
+
+.content_test
+{
+    button
+    {
+        padding: 3px;
+        width: auto;
+        height: 50px;
+        background-color: #3c65ec;
+        @include rounded(10px);
+        font-size: 16px;
+        color: #fff;
+        font-family: $font-bold - 5;
+        letter-spacing: 1px;
+    }
+    ul
+    {
+        li.item-test
+        {
+            font-family: $font-bold - 5;
+        }
+    }
+}// content_test
