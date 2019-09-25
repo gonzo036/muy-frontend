@@ -1,7 +1,7 @@
 <template>
 <aside class="info_box"> 
 <div class="text_info_central">
-	<h1>BIENVENIDOS A MUY</h1>
+	<h1>BIENVENIDOS AL ADMINISTRADOR MUY</h1>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 		sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 

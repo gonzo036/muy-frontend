@@ -51,7 +51,8 @@ body
         }
         @include mobilePlus
         {
-            padding: 0 10px;
+            padding: 0px 0px;
+            margin: 0;
         }
     } // form_container
 
@@ -121,7 +122,7 @@ body
         text-align: center;
         font-family: $font-bold;
         font-size: $font-title-form;
-        color: #333333;
+        color: #e30a33;
         line-height: 100%;
         padding-bottom: 44px;
         @include mobileMaxL
@@ -142,7 +143,7 @@ body
         box-sizing: border-box;
         background-size: 20px;
         margin: 0 0 40px;
-        visibility: hidden;
+        display: block;
 
         &.error
         {
@@ -160,7 +161,6 @@ body
     		visibility: hidden;
 			display: none;
     	}
-
         .box_elements_form
         {
             padding: 0 5%;
@@ -204,9 +204,9 @@ body
                 border-bottom: 2px solid #ff4b5a;
             }
             &:focus {
-                box-shadow: 0 4px 2px -2px #ccc;
+                box-shadow: 0 4px 2px -2px #e30a33;
                 padding: 16px 10px;
-                border-bottom: 2px solid #3c65ec;
+                border-bottom: 2px solid #e30a33;
             }
             @include mobileMaxL
             {
@@ -227,84 +227,178 @@ body
             max-width: 160px;
             width: 100%;
             height: 50px;
-            background-color: #3c65ec;
+            background-color: #3cc;
             @include rounded(10px);
             font-size: 16px;
             color: #fff;
             float: right;
             transition: all 0.4s;
-            box-shadow: 0 10px 30px 0px #3c65ec;
+            box-shadow: 0 10px 30px 0px #3cc;
             font-family: $font-bold;
             letter-spacing: 1px;
 
             &:hover
             {
-                background-color: #333333;
+                background-color: #e30a33;
                 box-shadow: 0 10px 30px 0px rgba(51, 51, 51, 0.5);
+            }
+            @include mobileMaxL
+            {
+                max-width: 100%;
             }
 
         }
     } // form
-    .select-style
+    
+    .admin_container
     {
-
-        background: #fff url('/static/images/arrowdown_quotation.png') no-repeat 95% 50%;
-        position: relative;
-        font-family: $font-bold;
-        border: none;
-        border-bottom: 2px solid #d9d9d9;
+        width: 90%;
+        margin: 90px auto 100px;
         display: block;
-        width: 100%;
-        background: transparent;
-        font-family: $font-light;
-        font-size: $font-text;
-        color: #555555;
-        padding: 15px 10px;
-        transition: all 0.30s ease-in-out;
-        @include tablet
-        {
-            width: 100%;
-        }
+        min-height: calc(80vh - 80px - 78px);
 
-        select
+        h1, h2
         {
-            letter-spacing: 1px;
-            padding: 8px 0px;
-            width: 100%;
-            border: none;
-            color: #666;
-            box-shadow: none;
-            background-color: transparent;
-            background-image: none;
-            appearance: none;
-
-            @include tablet
+            text-align: left;
+            font-family: $font-bold;
+            font-size: $font-title-form;
+            color: #e30a33;
+            line-height: 100%;
+            padding-bottom: 44px;
+            @include mobileMaxL
             {
-                width: 90%;
+                font-size: $font-title-form - 10;
+            }
+            img
+            {
+                width: 40px;
+                float: left;
+                margin: 0 20px 0 0;
+                @include mobileMaxL
+                {
+                    width: 30px;
+                }
             }
         }
-    } // select-style
+        h2
+        {
+            font-size: $font-title;
+            color: #797979;
+            padding-bottom: 10px;
+            @include mobileMaxL
+            {
+               font-size: $font-title - 10px;
+            }
+        }
+
+        ul,ol
+        {
+            li.list_orders
+            {
+                margin: 40px 0;
+                overflow: hidden;
+                padding: 0 0 10px;
+                border-bottom: 1px solid #e30a33;
+                &:last-child
+                {
+                    border-bottom: none;
+                }
+                @include mobileMaxL
+                {
+                   margin: 20px 0;
+                   padding: 0 0 40px;
+                }
+
+            }
+            li
+            {
+                .item_info
+                {
+                    float: left;
+                    max-width: 100%;
+                    width: 100%;
+                    clear: both;
+                    margin: 10px 0;
+                    .title_item
+                    {
+                        float: left;
+                        font-weight: 600;
+                        width: 100%;
+                        max-width: 250px;
+                        @include mobileMaxL
+                        {
+                           float: none;
+                           width: 100%;
+                           margin: 10px 0;
+                        }
+                    }
+                    .item
+                    {
+                        margin: 0px 5px;
+                        float: left;
+                        @include mobileMaxL
+                        {
+                           float: none;
+                           width: 100%;
+                           margin: 10px 0;
+                        }
+                    }
+                }
+                &.product
+                {
+                    line-height: 63px;
+
+                    img
+                    {
+                        clear: both;
+                        width: 65px;
+                        float: left;
+                    }
+                }
+                
+            }
+        }
+
+        .select-style
+        {   
+            background-image:url('#{$url-image}/arrowdown.png');
+            background-color: #fff;
+            background-repeat: no-repeat;
+            background-position: 95% 50%;
+            position: relative;
+            font-family: $font-bold;
+            border: none;
+            border-bottom: 2px solid #d9d9d9;
+            display: block;
+            width: 300px;
+            font-family: $font-light;
+            font-size: $font-text;
+            color: #555555;
+            padding: 0px 10px;
+            transition: all 0.30s ease-in-out;
+            @include tablet
+            {
+                width: 100%;
+            }
+
+            select
+            {
+                letter-spacing: 1px;
+                padding: 8px 0px;
+                width: 100%;
+                border: none;
+                color: #666;
+                box-shadow: none;
+                background-color: transparent;
+                background-image: none;
+                appearance: none;
+
+                @include tablet
+                {
+                    width: 90%;
+                }
+            }
+        } // select-style
+    }
 }// wrapper
 
-.content_test
-{
-    button
-    {
-        padding: 3px;
-        width: auto;
-        height: 50px;
-        background-color: #3c65ec;
-        @include rounded(10px);
-        font-size: 16px;
-        color: #fff;
-        font-family: $font-bold - 5;
-        letter-spacing: 1px;
-    }
-    ul
-    {
-        li.item-test
-        {
-            font-family: $font-bold - 5;
-        }
-    }
-}// content_test

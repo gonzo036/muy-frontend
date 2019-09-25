@@ -17,11 +17,10 @@ export default {
 		Form,
 		Info
 	},
-	methods: {
-		...Vuex.mapActions(['getData'])
-  	},
-	created() {
-		this.getData()
+	mounted() {
+		if (localStorage.user) {//Si existe el local stora lo redirige a la ruta de dashboard
+			this.$router.push('/dashboard');
+		}
 	}
 }
 </script>

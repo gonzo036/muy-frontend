@@ -1,37 +1,37 @@
 <template>
 	<div id="app" class="wrapper">
-		<Header />
-		<Login />
-		<Admin />
-		<Profile />
+		<router-view/><!-- Carga las vista de las paginas en esta seccion con un header y footer -->
 		<Footer />
 	</div>
 </template>
 
 <script>
-	import Header from './components/Header.vue'
-	import Login from './components/Login.vue'
-	import Admin from './components/Admin.vue'
-	import Profile from './components/Profile.vue'
 	import Footer from './components/Footer.vue'
 	import Vuex from 'vuex';
 
 	export default {
 		name: 'app',
 		components: {
-			Header,
-			Login,
-			Admin,
-			Profile,
 			Footer
 		},
 		methods: {
-			...Vuex.mapMutations(['setUser']),
+			//Llama los metodos y las actions del store.js
+			...Vuex.mapMutations(['setUser', 'setOrders']),
+			...Vuex.mapActions(['getData'])
+		},
+		created() {
+			//Valida si esta logeado para sacar la data del localStorage y asignarsela al usuario
+			if (localStorage.orders) {
+				this.setOrders(JSON.parse(localStorage.getItem('orders')));
+			}
+
+			if (localStorage.user) {
+				this.setUser(JSON.parse(localStorage.getItem('user')));
+			}
 		},
 		mounted() {
-			if (localStorage.user) {
-				this.setUser(localStorage.getItem('user'));
-			}
+			//trae la data del servicio y la carga los usuarios en memoria para usar, los pedidos si no existen los mete al localStorage
+			this.getData();
 		}
 	}
 </script>
